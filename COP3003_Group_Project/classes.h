@@ -7,21 +7,19 @@
 #ifndef CLASSES_H
 #define CLASSES_H
 
-
-
 // ==================
 // Weapon Class
 // ==================
-
 class Weapon {
 
 private:
+
 	std::string name;
 	int attackBonus = 0;
+
 public:
 
-	// Default Constructor
-
+	// Default Constructor - Compiler wasn't happy.
 	Weapon() = default;
 
 	// Weapon Constructor
@@ -31,15 +29,9 @@ public:
 	}// End of Weapon Constructor
 
 	// Public Member Functions
-	std::string get_name() {
-		std::string s = name;
-		return s;
-	}
+	std::string get_name() {return name;}
+	int get_attack_bonus() {return attackBonus;}
 
-	int get_attack_bonus() {
-		int value = attackBonus;
-		return value;
-	}
 };// End of Weapon Class
 
 
@@ -53,38 +45,30 @@ private:
 
 public:
 
-	// Armor Constructor
-	Armor() = default;
+	// Armor Constructors
+	Armor() = default; // Compiler wanted this.
 	Armor(string armorName, int value) {
 		name = armorName;
 		defenseBonus = value;
 	}// End of Armor Constructor
 
 	// Public Member Functions of Armor
-	string get_name() {
-		string s = name;
-		return s;
-	}
+	string get_name() { return name; }
+	int get_defense_bonus() { return defenseBonus;}
 
-	int get_defense_bonus() {
-		int value = defenseBonus;
-		return value;
-	}
 };// End of Armor Class
-// =================================================================================
 
+// =================================================================================
 
 
 // ==================
 // CHARACTER CLASS
 // ==================
-
 class Character {
 public:
 	string name;
 	int level = 1;
 };
-
 
 
 // ==================
@@ -115,14 +99,8 @@ public:
 
 	friend void print(Player p);// Makes print(class) a friend function.
 
-		friend void print(Player p);// Makes print(class) a friend function.
-
-
-
 	// Player  Class Constructor
-	// =========================
-
-		Player() = default;
+	Player() = default;
 
 	Player::Player(int i) { // Player constructor
 		cout << "What is your character's name?: ";
@@ -163,71 +141,67 @@ public:
 		wait(0.75);
 		cout << endl << "Your character, " << name << " has been created!\n" << endl;
 	}// End of Player constructor.
+	
+
+	// Public Member Functions
+
+	void set_max_health(int value) {maxHealth = value;}// Set Player max Health
+	int get_max_health() {	return maxHealth;}// Returns Player Max HP
+
+	void set_current_health(int value) {currentHealth = value;}// Set Player Current Health
+	int get_current_health() {return currentHealth;} // Returns Player current HP
+
+	void set_strength(int i) { strength = i;}
+	int get_strength() { return strength; }
+
+	void set_stamina(int i) { stamina = i; }
+	int get_stamina() { return stamina; }
+
+	void set_speed(int i) { speed = i; }
+	int get_speed() { return speed;}
 
 
-	void set_max_health(int value) {
-		maxHealth = value;
-	}// Set Player max Health
-
-	int get_max_health() {
-		int n = maxHealth;
-		return n;
-	}// Returns Player Max Health
-
-	void set_current_health(int value) {
-		currentHealth = value;
-	}// Set Player Current Health
-
-	int get_current_health() {
-		int n = currentHealth;
-		return n;
+	void calculate_attack() {
+		attack = (strength + equippedWeapon.get_attack_bonus());
 	}
+	int get_attack() { return attack; }
 
+	void calculate_defense() {
+		defense = (stamina + equippedArmor.get_defense_bonus());
+	}
+	int get_defense() { return defense; }
 
 	void initialize_combat_attribues() {// Set strength, stamina, and speed.
 		maxHealth = (strength * strength) / (50 / level) + 25;
-		attack = (strength + equippedWeapon.get_attack_bonus());
-		defense = (stamina + equippedArmor.get_defense_bonus());
-	}
-
-
+		calculate_attack();
+		calculate_defense();
+	} // End initialize_combat_attributes
 
 	void set_position(int x, int y) {
 		xPosition = x;
 		yPosition = y;
 	}
 
-	int get_x_position() {
-		int n = xPosition;
-		return n;
-	}
-	int get_y_position() {
-		int n = yPosition;
-		return n;
-	}
+	int get_x_position() {	return xPosition;}
+	int get_y_position() {	return yPosition;}
 
 	void print_position() {
 		cout << "Position: (" << this->xPosition << ", " << this->yPosition << ")" << endl;
 	}
 
-	int get_direction() { // get's current player direction.
-		int n = direction;
-		return n;
-	}// End get_direction
+	int get_direction() {	return direction;}// End get_direction
 
 	void set_direction() { // Set direction of player movement.
 		cout << "What direction would you like to go?" << endl;
 		if (this->yPosition < 50) {
 			cout << "1. North" << endl;
 		}
-
 		if (this->xPosition > 0) {
 			cout << "2. South" << endl;
 		}
 		if (this->yPosition < 50) {
 			cout << "3. East" << endl;
 		}
-
 		if (this->yPosition > 0) {
 			cout << "4. West" << endl;
 		}
@@ -244,12 +218,10 @@ public:
 		cout << "Going north!" << endl;
 	}// End go_north
 
-
 	void go_south() { // Move player in negative Y-direction.
 		this->yPosition -= 1;
 		cout << "Going south!" << endl;
 	}//End go_south
-
 
 	void go_east() {// Move player in the positive X-direction.
 		this->xPosition += 1;
@@ -266,16 +238,17 @@ public:
 
 	void equip(Weapon weapon) {
 		equippedWeapon = weapon;
+		calculate_attack();
 		cout << "You've equipped " << equippedWeapon.get_name() << endl;
 	}
 
-	void equip(Armor armor) {
+	void equip(Armor armor) { // Overload equip to handle objects of class Armor
 		equippedArmor = armor;
+		calculate_defense();
 		cout << "You've equipped " << equippedArmor.get_name() << endl;
 	}
 
 };// End Player Class
-
 
 
 //============
@@ -283,18 +256,17 @@ public:
 //============
 class Enemy : public Character {
 private:
-	int attack;
-	int baseAttack;
-	int defense;
-	int baseDefense;
-	int speed;
-	int baseSpeed;
 	int maxHealth;
 	int currentHealth;
+	int baseAttack;
+	int attack;
+	int baseDefense;
+	int defense;
+	int speed;
+	int baseSpeed;
+
 
 public:
-	string name;
-	int level;
 
 	// Default Constructor
 	Enemy() = default;
@@ -312,9 +284,11 @@ public:
 		maxHealth = 0;
 		currentHealth = maxHealth;
 	}
+
 	friend void print(Enemy e);
 	void create_instance(Player p) {
-		int n = rand() % STAT_DIE;
+		int n = rand() % ENEMY_LEVEL_DIE;
+		n -= 2;
 		if (p.level + n < 1) {
 			level = 1;
 		}
@@ -327,48 +301,54 @@ public:
 		defense = level + baseDefense;
 		speed = level + baseSpeed;
 	}
-};// End Enemy Class
+	string get_name() { return name; }
 
-// =================================================================================
+	int get_current_health() { return currentHealth; }
+	void set_current_health(int i) { currentHealth = i; }
+
+	int get_max_health() { return maxHealth; }
+
+	int get_attack() { return baseAttack; }
+	int get_defense() { return baseDefense; }
+	int get_speed() { return speed; }
+
+
+};// End Enemy Class ======================
+
 
 // =========================
 // INITIALIZE ENTITY OBJECTS
 // =========================
 
-
 // Weapon Objects
-// ==============
-
+// ========================================
 Weapon noWeapon("No Weapon", 0);
 Weapon woodSword("Wooden Sword", 1);
 Weapon ironSword("Iron Sword", 3);
 
 // Armor Objects
-// =============
-
+// ========================================
 Armor noArmor("No Armor", 0);
 Armor leatherArmor("Leather Armor", 2);
 Armor chainArmor("Chainmail Armor", 4);
 
-
-// Create monsters
-// ===============
-
+// Create monster objects
+// ========================================
 Enemy wolf("Wolf", 2, 0, 2);
 Enemy rat("Rat", 0, 0, 3);
 Enemy ogre("Ogre", 2, 1, 0);
 
+// Array of possible monster encounters.
 Enemy monsterArray[3]{ wolf, rat, ogre };
 
 // ===============================
 // Forward Function Declarations 2
 // ===============================
 
-// The following functions need to be declared immediately after Classes are defined.
-
+// The following functions were needed by the compiler to be declared
+// after Classes are defined, since they were passed Classes as arguments.
 Enemy encounter(Player p);
 bool travel(Player& p);
 void move(Player& p);
-void do_battle(bool battleFlag, Player p);
 
 #endif

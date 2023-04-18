@@ -4,9 +4,7 @@
 // Include files
 // =============
 
-
-
-// Needed for random number generator.
+// Libraries needed for random number generator.
 #include <cstdlib> // random numbers
 #include <ctime> // seed random
 #include "timer.h" // 
@@ -30,8 +28,10 @@ bool roll_battle() {
 
 int monster_roll() {
 	int sample = sizeof(monsterArray)/sizeof(Enemy);
-	cout << sample;
-	return sample;
+	cout << "Sample size: " << sample << endl;
+	int i = rand() % sample;
+	cout << "Rolled " << i << "!" << endl;
+	return i;
 }
 
 #endif

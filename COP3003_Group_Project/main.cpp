@@ -4,23 +4,14 @@
 // | File: main.cpp                                           |
 // ============================================================
 
-
-// =============
 // Include files
-// =============
-
 #include "main.h"
 #include "game.h"
 
-
+// Main Function
+// =============
 int main(){
-
 	Game game1;
 	game1.initialize();
 	game1.run();
-	
-}
-
-
-
-
+}// End Main

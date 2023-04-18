@@ -25,7 +25,7 @@ using namespace std;
 
 // Dice for random rolls
 const int STAT_DIE = 4;
-const int ENEMY_LVL_DIE = 5;
+const int ENEMY_LEVEL_DIE = 5;
 
 
 // Case constants for directional movement.

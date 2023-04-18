@@ -51,9 +51,18 @@ void print(Enemy e) { // print Overload -  Display enemy attributes to user.
 	cout << "ATK: " << e.attack << "\tDEF: " << e.defense << "\tSPD: " << e.speed << endl;
 } // End print Enemy class
 
+void print(Player p, Enemy e) {
+	cout << "========================================" << endl;
+	cout << p.name << "\t\t\t" << e.name << endl;
+	cout << "Level " << p.level << "\t\t\tLevel " << e.level << endl;
+	cout << "HP: " << p.get_current_health() << " / " << p.get_max_health();
+	cout << "\t\t\tHP: " << e.get_current_health() << " / " << e.get_max_health() << endl;
+}
+
 void print(string s) { // print Overload -  Display string to user.
 	cout << "\n" << s << endl;
 }// End print string
+
 
 
 
@@ -116,5 +125,13 @@ bool travel(Player& p) {
 	return fightFlag;
 }
 
+bool check_game_over(Player p) {
+	if (p.get_current_health() <= 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 
 #endif

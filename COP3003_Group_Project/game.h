@@ -9,12 +9,10 @@
 
 #include "main.h"
 #include "rolls.h" // Needed for rolling random numbers.
-#include "timer.h"
+#include "timer.h" // Needed to create Wait timers for user readability.
 #include "classes.h"
 #include "function_defs.h"
 #include "battle.h"
-
-
 
 class Game {
 private:
@@ -30,7 +28,6 @@ public:
 		wait(0.75);
 		print(player);
 		wait(0.75);
-		print("\n");
 		player.equip(noArmor);
 		wait(0.75);
 		player.equip(noWeapon);
@@ -55,6 +52,7 @@ public:
 			wait(1.0);
 			battleFlag = travel(player);
 			do_battle(battleFlag, player);
+			exitFlag = check_game_over(player);
 		}
 	}
 
