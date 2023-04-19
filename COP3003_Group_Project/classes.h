@@ -321,25 +321,40 @@ public:
 // =========================
 
 // Weapon Objects
-// ========================================
-Weapon noWeapon("No Weapon", 0);
-Weapon woodSword("Wooden Sword", 1);
-Weapon ironSword("Iron Sword", 3);
+// ==============
+
+Weapon noWeapon("No Weapon, No-Hands", 0);
+Weapon woodSword("Wooden Sword, One-Hand", 1);
+Weapon ironSword("Iron Sword, One-Hand", 3);
+Weapon mace("Mace, One-Hand", 2);
+Weapon dagger("Dagger, One-Hand", 2);
+Weapon lance("Lance, Both-Hands", 4);
+Weapon pike("Pike, Both-Hands", 3);
+Weapon halberd("Halberd, Both-Hands", 4);
 
 // Armor Objects
-// ========================================
-Armor noArmor("No Armor", 0);
-Armor leatherArmor("Leather Armor", 2);
-Armor chainArmor("Chainmail Armor", 4);
+// =============
 
-// Create monster objects
-// ========================================
+Armor noArmor("No Armor", 0);
+Armor leatherArmor("Leather Armor", 1);
+Armor chainArmor("Chainmail Armor", 4);
+Armor clothArmor("No Armor", 2);
+Armor plateArmor("Leather Armor", 5);
+Armor mailArmor("Chainmail Armor", 3);
+
+
+// Create monsters
+// ===============
+
 Enemy wolf("Wolf", 2, 0, 2);
 Enemy rat("Rat", 0, 0, 3);
 Enemy ogre("Ogre", 2, 1, 0);
+Enemy lizard("Lizard", 2, 2, 0);
+Enemy giant("Giant", 0, 2, 3);
+Enemy dragon("Dragon", 2, 2, 2);
 
-// Array of possible monster encounters.
-Enemy monsterArray[3]{ wolf, rat, ogre };
+Enemy monsterArray[6]{ wolf, rat, ogre, lizard, giant, dragon };
+
 
 // ===============================
 // Forward Function Declarations 2
