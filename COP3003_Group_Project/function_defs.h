@@ -7,21 +7,22 @@
 #ifndef FUNCTION_DEFS_H
 #define FUNCTION_DEFS_H
 
+
 // ====================
 // Function Definitions
 // ====================
 
 
 string get_string() { // Get string input from user.
-	string s;
-	cin >> s;
-	return s;
+    string s;
+    cin >> s;
+    return s;
 }// End of get_string
 
 int get_integer() { //get an integer input from user.
-	int n;
-	cin >> n;
-	return n;
+    int n;
+    cin >> n;
+    return n;
 }// End of get_integer
 
 
@@ -31,107 +32,121 @@ int get_integer() { //get an integer input from user.
 //===========================
 
 void print(Player p) { // print Overload - Display player attributes to user.
-	cout << endl;
-	wait(0.5);
-	cout << "====================" << endl;
-	cout << p.name << ", Level " << p.level << endl;
-	cout << "====================" << endl;
-	cout << "HP:  " << p.currentHealth << " / " << p.maxHealth << endl;
-	cout << "STR: " << p.strength << "\tSTA: " << p.stamina << "\tSPD: " << p.speed << endl;
-	cout << "ATK: " << p.attack << "\tDEF: " << p.defense << endl;
+    cout << endl;
+    wait(0.5);
+    cout << "====================" << endl;
+    cout << p.name << ", Level " << p.level << endl;
+    cout << "====================" << endl;
+    cout << "HP:  " << p.currentHealth << " / " << p.maxHealth << endl;
+    cout << "STR: " << p.strength << "\tSTA: " << p.stamina << "\tSPD: " << p.speed << endl;
+    cout << "ATK: " << p.attack << "\tDEF: " << p.defense << endl;
 } // End print Player class
 
 void print(Enemy e) { // print Overload -  Display enemy attributes to user.
-	cout << endl;
-	wait(0.5);
-	cout << "====================" << endl;
-	cout << e.name << ", Level " << e.level << endl;
-	cout << "====================" << endl;
-	cout << "HP:  " << e.currentHealth << " / " << e.maxHealth << endl;
-	cout << "ATK: " << e.attack << "\tDEF: " << e.defense << "\tSPD: " << e.speed << endl;
+    cout << endl;
+    wait(0.5);
+    cout << "====================" << endl;
+    cout << e.name << ", Level " << e.level << endl;
+    cout << "====================" << endl;
+    cout << "HP:  " << e.currentHealth << " / " << e.maxHealth << endl;
+    cout << "ATK: " << e.attack << "\tDEF: " << e.defense << "\tSPD: " << e.speed << endl;
 } // End print Enemy class
 
 void print(Player p, Enemy e) {
-	cout << "========================================" << endl;
-	cout << p.name << "\t\t\t" << e.name << endl;
-	cout << "Level " << p.level << "\t\t\tLevel " << e.level << endl;
-	cout << "HP: " << p.get_current_health() << " / " << p.get_max_health();
-	cout << "\t\t\tHP: " << e.get_current_health() << " / " << e.get_max_health() << endl;
+    cout << "========================================" << endl;
+    cout << p.name << "\t\t\t" << e.name << endl;
+    cout << "Level " << p.level << "\t\t\tLevel " << e.level << endl;
+    cout << "HP: " << p.get_current_health() << " / " << p.get_max_health();
+    cout << "\t\t\tHP: " << e.get_current_health() << " / " << e.get_max_health() << endl;
 }
 
 void print(string s) { // print Overload -  Display string to user.
-	cout << "\n" << s << endl;
+    cout << "\n" << s << endl;
 }// End print string
 
 
 
 
 bool check_for_boundary(Player & p) { // Checks player position to determine if at edge of map.
-	if (p.get_x_position() == 50 || p.get_x_position() == 0 || p.get_y_position() == 0 || p.get_x_position() == 50 || p.get_direction() == 0) {
-		return true;
-	}
-	else { return false; }
+    if (p.get_x_position() == 50 || p.get_x_position() == 0 || p.get_y_position() == 0 || p.get_x_position() == 50 || p.get_direction() == 0) {
+        return true;
+    }
+    else { return false; }
 } // End of check_for_boundary.
 
 
 void move(Player& p) {
-	switch (p.get_direction()) {
-	case STAY:
-		break;
-	case NORTH:
-		if (p.get_y_position() < 50) {
-			p.go_north();
+    switch (p.get_direction()) {
+    case STAY:
+        break;
+    case NORTH:
+        if (p.get_y_position() < 50) {
+            p.go_north();
 
-		}
-		else { print("You have reached the northern boundary."); }
-		break;
-	case SOUTH:
-		if (p.get_y_position() > 0) {
-			p.go_south();
+        }
+        else { print("You have reached the northern boundary."); }
+        break;
+    case SOUTH:
+        if (p.get_y_position() > 0) {
+            p.go_south();
 
-		}
-		else { print("You have reached the southern boundary."); }
-		break;
-	case EAST:
-		if (p.get_x_position() < 50) {
-			p.go_east();
+        }
+        else { print("You have reached the southern boundary."); }
+        break;
+    case EAST:
+        if (p.get_x_position() < 50) {
+            p.go_east();
 
-		}
-		else { print("You have reached the eastern boundary."); }
-		break;
-	case WEST:
-		if (p.get_x_position() > 0) {
-			p.go_west();
+        }
+        else { print("You have reached the eastern boundary."); }
+        break;
+    case WEST:
+        if (p.get_x_position() > 0) {
+            p.go_west();
 
-		}
-		else { print("You have reached the western boundary."); }
-		break;
-	}
+        }
+        else { print("You have reached the western boundary."); }
+        break;
+    }
 }
 
 bool travel(Player& p) {
-	print("\n");
-	p.print_position();
-	wait(1.0);
-	print("\n");
-	bool at_boundary = check_for_boundary(p);
-	if (at_boundary == true) {
-		p.set_direction();
-	}
-	else {
-		move(p);
-	}
-	bool fightFlag = roll_battle();
-	return fightFlag;
+    print("\n");
+    p.print_position();
+    wait(1.0);
+    print("\n");
+    bool at_boundary = check_for_boundary(p);
+    if (at_boundary == true) {
+        p.set_direction();
+    }
+    else {
+        move(p);
+    }
+    bool fightFlag = roll_battle();
+    return fightFlag;
 }
 
 bool check_game_over(Player p) {
-	if (p.get_current_health() <= 0) {
-		return true;
-	}
-	else {
-		return false;
-	}
+    if (p.get_current_health() <= 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+void game_over() {
+    system("cls");
+    wait(2.0);
+    cout << endl << endl;
+    cout << "  /$$$$$$   /$$$$$$  /$$      /$$ /$$$$$$$$        /$$$$$$  /$$    /$$ /$$$$$$$$ /$$$$$$$"  << endl;
+    cout << " /$$__  $$ /$$__  $$| $$$    /$$$| $$_____/       /$$__  $$| $$   | $$| $$_____/| $$__  $$" << endl;
+    cout << "| $$   __/| $$    $$| $$$$  /$$$$| $$            | $$    $$| $$   | $$| $$      | $$    $$" << endl;
+    cout << "| $$ /$$$$| $$$$$$$$| $$ $$/$$ $$| $$$$$         | $$  | $$|  $$ / $$/| $$$$$   | $$$$$$$/" << endl;
+    cout << "| $$|_  $$| $$__  $$| $$  $$$| $$| $$__/         | $$  | $$    $$ $$/ | $$__/   | $$__  $$" << endl;
+    cout << "| $$    $$| $$  | $$| $$   $ | $$| $$            | $$  | $$     $$$/  | $$      | $$    $$" << endl;
+    cout << "|  $$$$$$/| $$  | $$| $$  /  | $$| $$$$$$$$      |  $$$$$$/      $/   | $$$$$$$$| $$  | $$" << endl;
+    cout << "  ______/ |__/  |__/|__/     |__/|________/        ______/      _/    |________/|__/  |__/" << endl;
 }
 
 #endif

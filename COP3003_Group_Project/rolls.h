@@ -29,7 +29,12 @@ bool roll_battle() {
 int monster_roll() {
 	int sample = sizeof(monsterArray)/sizeof(Enemy);
 	cout << "Sample size: " << sample << endl;
-	int i = rand() % sample;
+	int r = rand() % 100;
+	float f = rand() % 100;
+	f /= 1000;
+	wait(f);
+	int s = rand() % 99;
+	int i = r*s % sample;
 	cout << "Rolled " << i << "!" << endl;
 	return i;
 }

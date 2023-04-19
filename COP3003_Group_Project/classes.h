@@ -105,6 +105,7 @@ public:
 	Player::Player(int i) { // Player constructor
 		cout << "What is your character's name?: ";
 		name = get_string();
+		system("cls");
 		wait(1);
 		cout << "\nInitializing " << name << "'s attributes." << endl;
 		level = 1;
@@ -138,7 +139,8 @@ public:
 		initialize_combat_attribues();
 		currentHealth = maxHealth;
 		set_position(25, 10);
-		wait(0.75);
+		wait(1.5);
+		system("cls");
 		cout << endl << "Your character, " << name << " has been created!\n" << endl;
 	}// End of Player constructor.
 	
@@ -172,7 +174,7 @@ public:
 	int get_defense() { return defense; }
 
 	void initialize_combat_attribues() {// Set strength, stamina, and speed.
-		maxHealth = (strength * strength) / (50 / level) + 25;
+		maxHealth = (((strength * strength) % 50) / 2)  + 25;
 		calculate_attack();
 		calculate_defense();
 	} // End initialize_combat_attributes
@@ -322,6 +324,14 @@ public:
 
 // Weapon Objects
 // ==============
+Weapon noWeapon("No Weapon, No-Hands", 0);
+Weapon woodSword("Wooden Sword, One-Hand", 1);
+Weapon ironSword("Iron Sword, One-Hand", 3);
+Weapon mace("Mace, One-Hand", 2);
+Weapon dagger("Dagger, One-Hand", 2);
+Weapon lance("Lance, Both-Hands", 4);
+Weapon pike("Pike, Both-Hands", 3);
+Weapon halberd("Halberd, Both-Hands", 4);
 
 Weapon noWeapon("No Weapon, No-Hands", 0);
 Weapon woodSword("Wooden Sword, One-Hand", 1);
@@ -333,8 +343,6 @@ Weapon pike("Pike, Both-Hands", 3);
 Weapon halberd("Halberd, Both-Hands", 4);
 
 // Armor Objects
-// =============
-
 Armor noArmor("No Armor", 0);
 Armor leatherArmor("Leather Armor", 1);
 Armor chainArmor("Chainmail Armor", 4);
@@ -345,16 +353,27 @@ Armor mailArmor("Chainmail Armor", 3);
 
 // Create monsters
 // ===============
+Armor clothArmor("No Armor", 2);
+Armor plateArmor("Leather Armor", 5);
+Armor mailArmor("Chainmail Armor", 3);
 
+
+// Create monsters
+// ========================================
 Enemy wolf("Wolf", 2, 0, 2);
 Enemy rat("Rat", 0, 0, 3);
-Enemy ogre("Ogre", 2, 1, 0);
 Enemy lizard("Lizard", 2, 2, 0);
 Enemy giant("Giant", 0, 2, 3);
 Enemy dragon("Dragon", 2, 2, 2);
 
 Enemy monsterArray[6]{ wolf, rat, ogre, lizard, giant, dragon };
-
+Enemy lizard("Lizard", 2, 2, 0);
+Enemy giant("Giant", 0, 2, 3);
+Enemy dragon("Dragon", 2, 2, 2);
+Enemy monsterArray[6]{ wolf, rat, ogre, lizard, giant, dragon };
+Enemy monsterArray[6]{ wolf, rat, ogre, lizard, giant, dragon };
+// Array of possible monster encounters.
+Enemy monsterArray[3]{ wolf, rat, ogre };
 
 // ===============================
 // Forward Function Declarations 2
