@@ -26,6 +26,7 @@ public:
 		wait(1.0);
 		player = Player(1);
 		wait(0.75);
+		system("cls");
 		print(player);
 		wait(0.75);
 		player.equip(noArmor);
@@ -39,6 +40,7 @@ public:
 
 	void run() {
 		while (exitFlag == false) {
+			system("cls");
 			turn += 1;
 			wait(0.75);
 			print("\nStarting Main Game Loop\n");
@@ -53,6 +55,12 @@ public:
 			battleFlag = travel(player);
 			do_battle(battleFlag, player);
 			exitFlag = check_game_over(player);
+		}
+		if (exitFlag == true) {
+			game_over();
+		}
+		if (battleFlag == true) {
+			player.get_direction();
 		}
 	}
 

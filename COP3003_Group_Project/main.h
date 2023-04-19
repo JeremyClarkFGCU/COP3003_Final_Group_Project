@@ -24,7 +24,7 @@ using namespace std;
 
 
 // Dice for random rolls
-const int STAT_DIE = 4;
+const int STAT_DIE = 5;
 const int ENEMY_LEVEL_DIE = 5;
 
 
@@ -34,6 +34,12 @@ const int NORTH = 1;
 const int SOUTH = 2;
 const int EAST = 3;
 const int WEST = 4;
+
+// Case constants for battle menu
+const int ATTACK = 1;
+const int DEFEND = 2;
+const int ITEM = 3;
+const int RUN = 4;
 
 // ================
 // Global Variables
