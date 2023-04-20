@@ -4,9 +4,10 @@
 // | Desc: Contains Entity Classes for game.	|
 // ==============================================
 
+
 #ifndef CLASSES_H
 #define CLASSES_H
-
+#include <iostream>
 // ==================
 // Weapon Class
 // ==================
@@ -238,6 +239,14 @@ public:
 
 // Player Member Functions for equipment handling
 
+	string get_armor_name() {
+		return equippedArmor.get_name();
+	}
+
+	string get_weapon_name() {
+		return equippedWeapon.get_name();
+	}
+
 	void equip(Weapon weapon) {
 		equippedWeapon = weapon;
 		calculate_attack();
@@ -313,8 +322,6 @@ public:
 	int get_attack() { return baseAttack; }
 	int get_defense() { return baseDefense; }
 	int get_speed() { return speed; }
-
-
 };// End Enemy Class ======================
 
 
@@ -332,12 +339,16 @@ Weapon lance("Lance, Both-Hands", 4);
 Weapon pike("Pike, Both-Hands", 3);
 Weapon halberd("Halberd, Both-Hands", 4);
 
+Weapon weaponArray[7]{ noWeapon, ironSword, mace, dagger, lance, pike,halberd };
+
 // Armor Objects
 Armor noArmor("No Armor", 0);
 Armor clothArmor("No Armor", 1);
 Armor leatherArmor("Leather Armor", 2);
 Armor mailArmor("Chainmail Armor", 4);
 Armor plateArmor("Leather Armor", 6);
+
+Armor armorArray[5]{ noArmor, clothArmor, leatherArmor, mailArmor, plateArmor };
 
 
 // Create monsters
