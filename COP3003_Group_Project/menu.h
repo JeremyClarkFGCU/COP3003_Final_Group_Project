@@ -31,6 +31,13 @@ void start_menu() {
 void select_weapon(Player & p) {
 	cout << "You currently have " << p.get_weapon_name() << " equipped.\n";
 	cout << "Equip one of the following?" << endl;
+	int i = 0;
+	for (Weapon weapon : weaponArray) {
+		cout << i << ". " << weapon.get_name() << endl;
+		++i;
+	}
+	int c = get_integer();
+	p.equip(weaponArray[c]);
 }// Menu to select and equip new weapon.
 
 void select_armor(Player & p) {

@@ -182,17 +182,17 @@ public:
 	int get_direction() {	return direction;}// End get_direction
 
 	void set_direction() { // Set direction of player movement.
-		cout << "What direction would you like to go?" << endl;
+		cout << "What direction would you like to go from here?" << endl;
 		if (this->yPosition < 50) {
 			cout << "1. North" << endl;
 		}
-		if (this->xPosition > 0) {
+		if (this->yPosition > 0) {
 			cout << "2. South" << endl;
 		}
-		if (this->yPosition < 50) {
+		if (this->xPosition < 50) {
 			cout << "3. East" << endl;
 		}
-		if (this->yPosition > 0) {
+		if (this->xPosition > 0) {
 			cout << "4. West" << endl;
 		}
 		cout << "\n0. Stay Put" << endl;
@@ -359,5 +359,5 @@ Enemy monsterArray[6]{ wolf, rat, ogre, lizard, giant, dragon};
 Enemy encounter(Player p);
 bool travel(Player& p);
 void move(Player& p);
-
+bool roll_battle(Player p);
 #endif

@@ -109,16 +109,25 @@ void battle_menu(Player & p, Enemy & e) {
 
 void do_battle(bool flag, Player & p) {
 	if (flag == true) {
+		print("Entering Battle Sequence.\n");
+		wait(1.0);
+		print("Enemy Instance being created.\n");
+		wait(1.0);
 		Enemy e = encounter(p);
 		while (p.get_current_health() > 0 && e.get_current_health() > 0) {// Battle Loop
+			print("Battle Loop Entered.\n");
+			wait(1.0);
 			system("cls");
 			print(p, e);
 			battle_menu(p, e);
 		}// End Battle Loop
 	}
 	else {
-		print("No Battle!");
+		print("Battle Flag = False. No enemy encounter\n");
+		wait(1.0);
 	}
+	print("Exiting do battle.\n");
+	wait(1.0);
 } // End do_battle
 
 

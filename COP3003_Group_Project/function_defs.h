@@ -7,8 +7,9 @@
 #ifndef FUNCTION_DEFS_H
 #define FUNCTION_DEFS_H
 
+#include "main.h"
 #include "menu.h"
-
+#include "rolls.h";
 
 // ====================
 // Function Definitions
@@ -115,19 +116,28 @@ void move(Player & p) {
 
 bool travel(Player & p) {
     wait(0.5);
+    print("Checking for boundary collision.\n");
+    wait(1.0);
     bool at_boundary = check_for_boundary(p);
     if (at_boundary == true) {
-        cout << p.name << " currently at a boundary." << endl;
+        print("You are at a boundary.");
+        wait(1.0);
+        string boundary = "";
+        if (p.get_x_position() == 0) { boundary = "western"; }
+        if (p.get_x_position() == 50) { boundary = "eastern"; }
+        if (p.get_y_position() == 0) { boundary = "southern"; }
+        if (p.get_y_position() == 50) { boundary = "northern"; }
+        cout << p.name << " currently at the "<< boundary <<" boundary." << endl;
         p.set_direction();
     }
     else {
-        cout << p.name << " is not on the move." << endl;
-        move(p);
+        cout << p.name << " is not at a boundary." << endl;
         if (p.get_direction() == 0) {
             cout << p.name << " is idle." << endl;
             p.set_direction();
         }
     }
+    move(p);
     print(p);
     p.print_position();
     bool fightFlag = roll_battle(p);
