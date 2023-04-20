@@ -1,7 +1,7 @@
 // ==============================================
 // | battle.h									|
 // | Authors; Rainier St. Fort, Markendy Pierre	|
-// | Desc: Contains Battle Mechanics	|
+// | Desc: Contains Battle Mechanics			|
 // ==============================================
 
 #ifndef BATTLE_H
@@ -9,6 +9,7 @@
 
 #include "classes.h"
 #include "timer.h"
+#include "menu.h"
 
 //=======================
 // MOVE TO MENU
