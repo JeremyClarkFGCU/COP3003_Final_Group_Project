@@ -8,6 +8,8 @@
 #ifndef CLASSES_H
 #define CLASSES_H
 #include <iostream>
+
+
 // ==================
 // Weapon Class
 // ==================
@@ -67,7 +69,7 @@ public:
 // ==================
 class Character {
 public:
-	string name;
+	string name = "";
 	int level = 1;
 };
 
@@ -78,19 +80,19 @@ public:
 class Player : public Character {
 private:
 	// Base Attributes
-	int maxHealth;
-	int currentHealth;
-	int strength;
-	int stamina;
-	int speed;
+	int maxHealth= 1 ;
+	int currentHealth = 1;
+	int strength = 0;
+	int stamina = 0;
+	int speed = 0;
 
 	// Combat Attributes
-	int attack;
-	int defense;
+	int attack = 0;
+	int defense = 0;
 
 	// Location Data
-	int xPosition;
-	int yPosition;
+	int xPosition = 0;
+	int yPosition = 0;
 	int direction = STAY;
 
 	Weapon equippedWeapon;
@@ -107,35 +109,20 @@ public:
 		cout << "What is your character's name?: ";
 		name = get_string();
 		system("cls");
-		wait(1);
+		wait(0.5);
 		cout << "\nInitializing " << name << "'s attributes." << endl;
 		level = 1;
-		wait(0.75);
+		wait(0.5);
 		cout << "Rolling strength";
-		wait(0.25);
-		cout << ".";
-		wait(0.25);
-		cout << ".";
-		wait(0.25);
-		cout << "." << endl;
+		dot_dot_dot();
 		strength = roll_attribute();
-		wait(0.75);
+		wait(0.5);
 		cout << "Rolling stamina";
-		wait(0.25);
-		cout << ".";
-		wait(0.25);
-		cout << ".";
-		wait(0.25);
-		cout << "." << endl;
+		dot_dot_dot();
 		stamina = roll_attribute();
-		wait(0.75);
-		cout << "Initializing speed";
-		wait(0.25);
-		cout << ".";
-		wait(0.25);
-		cout << ".";
-		wait(0.25);
-		cout << "." << endl;
+		wait(0.5);
+		cout << "Rolling speed";
+		dot_dot_dot();
 		speed = roll_attribute();
 		initialize_combat_attribues();
 		currentHealth = maxHealth;

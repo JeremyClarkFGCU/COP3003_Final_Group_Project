@@ -117,11 +117,14 @@ bool travel(Player & p) {
     wait(0.5);
     bool at_boundary = check_for_boundary(p);
     if (at_boundary == true) {
+        cout << p.name << " currently at a boundary." << endl;
         p.set_direction();
     }
     else {
+        cout << p.name << " is not on the move." << endl;
         move(p);
         if (p.get_direction() == 0) {
+            cout << p.name << " is idle." << endl;
             p.set_direction();
         }
     }
@@ -138,6 +141,37 @@ bool check_game_over(Player p) {
     else {
         return false;
     }
+}
+
+void dot_dot_dot() {
+    wait(0.25);
+    cout << ".";
+    wait(0.25);
+    cout << ".";
+    wait(0.25);
+    cout << "." << endl;
+}
+
+
+void splash() {
+    cout << "  / $$$$$$   /$$$$$$$   / $$$$$$"  << endl;
+    cout <<" / $$__  $$ | $$__  $$ / $$___ $$"  << endl;
+    cout <<" | $$   __/ | $$    $$ | $$    __/" << endl;
+    cout <<" | $$$$$$   | $$$$$$$/ | $$"        << endl;
+    cout <<"   ____  $$ | $$____/  | $$"        << endl;
+    cout <<"  / $$    $$| $$       | $$    $$"  << endl;
+    cout <<"  | $$$$$$/ | $$       | $$$$$$ /"  << endl;
+    cout <<"    ______/ |__ /        ______/"   << endl;
+    cout << endl;
+    cout << endl;
+            cout << " /$$$$$$   / $$$$$$$   / $$ / $$ / $$$$$$$$ / $$ / $$/ $$$$$$$$/ $$ / $$ / $$$$$$$  / $$$$$$$$" << endl;
+            cout << "/ $$__  $$ | $$__  $$  | $$ | $$ | $$_____/| $$$ | $$|__  $$ _/| $$ | $$ | $$___ $$ | $$_____/" << endl;
+            cout << "| $$    $$ | $$     $$ | $$ | $$ | $$      | $$$$| $$   | $$   | $$ | $$ | $$    $$ | $$" << endl;
+            cout << "| $$$$$$$$ | $$   | $$ | $$ / $$/| $$$$$   | $$ $$ $$   | $$   | $$ | $$ | $$$$$$$/ | $$$$$" << endl;
+            cout << "| $$__  $$ | $$   | $$    $$ $$/ | $$__/   | $$  $$$$   | $$   | $$ | $$ | $$__  $$ | $$__/" << endl;
+            cout << "| $$ | $$  | $$  | $$      $$$/  | $$ | $$   $$$ | $$   | $$   | $$ | $$ | $$  | $$ | $$" << endl;
+            cout << "| $$ | $$  | $$$$$$$ /      $/   | $$$$$$$$| $$    $$   | $$   | $$$$$$/ | $$  | $$ | $$$$$$$$" << endl;
+            cout << "| __/  |__/|_______ /      _/    |________/|__ /  __/   |__ /    ______/ |__/  |__/ |________/" << endl;
 }
 
 void game_over() {

@@ -13,6 +13,20 @@
 
 using namespace std;
 
+void start_menu() {
+	cout << "Choose an option:\n" << endl;
+	cout << "1. New Game" << endl;
+	cout << "0. Quit" << endl;
+	int choice = get_integer();
+
+	switch (choice) {
+	case 0:
+		exitFlag = true;
+		break;
+	case 1:
+		break;
+	}
+}
 
 void select_weapon(Player & p) {
 	cout << "You currently have " << p.get_weapon_name() << " equipped.\n";

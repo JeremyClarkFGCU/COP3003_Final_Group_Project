@@ -66,6 +66,7 @@ int get_integer();
 int roll_attribute();
 void print();
 void create_equipment();
+void dot_dot_dot();
 
 
 

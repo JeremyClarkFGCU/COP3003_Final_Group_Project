@@ -11,13 +11,7 @@
 #include "timer.h"
 #include "menu.h"
 
-//=======================
-// MOVE TO MENU
-// BATTLE MENU
-//=======================
-
-
-Enemy encounter(Player p) {
+Enemy encounter(Player p) { // Creates instance of enemy
 	int x = monster_roll();
 	Enemy e = monsterArray[x];
 	system("cls");
