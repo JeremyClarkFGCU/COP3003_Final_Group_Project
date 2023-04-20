@@ -12,6 +12,6 @@
 // =============
 int main(){
 	Game game1;
-	game1.initialize(game1.player);
-	game1.run(game1.player);
+	game1.initialize();
+	game1.run();
 }// End Main

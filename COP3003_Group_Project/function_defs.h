@@ -114,18 +114,20 @@ void move(Player & p) {
 }
 
 bool travel(Player & p) {
-    print("\n");
-    p.print_position();
-    wait(1.0);
-    print("\n");
+    wait(0.5);
     bool at_boundary = check_for_boundary(p);
     if (at_boundary == true) {
         p.set_direction();
     }
     else {
         move(p);
+        if (p.get_direction() == 0) {
+            p.set_direction();
+        }
     }
-    bool fightFlag = roll_battle();
+    print(p);
+    p.print_position();
+    bool fightFlag = roll_battle(p);
     return fightFlag;
 }
 

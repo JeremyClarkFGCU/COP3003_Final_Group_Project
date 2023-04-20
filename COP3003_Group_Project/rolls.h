@@ -15,11 +15,16 @@ int roll_attribute() {
 	return n;
 }
 
-bool roll_battle() {
-	int n = rand() % 100 + 1;
-	cout << "You rolled " << n << "!" << endl;
-	if (n <= 12) {
-		return true;
+bool roll_battle(Player p) {
+	if (p.get_direction() == STAY) {
+		int n = rand() % 100 + 1;
+		cout << "You rolled " << n << "!" << endl;
+		if (n <= 12) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	else {
 		return false;

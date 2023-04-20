@@ -16,14 +16,13 @@
 
 class Game {
 private:
-	
+	Player player;
 	bool battleFlag;
 	int turn = 0;
 
 public:
-	Player player;
 
-	void initialize(Player & player) {
+	void initialize() {
 		cout << "Welcome! Setting up the game." << endl;
 		wait(1.0);
 		player = Player(1);
@@ -39,20 +38,17 @@ public:
 		player.set_direction();
 	}
 
-	void run(Player & player) {
+	void run() {
 		while (exitFlag == false) {
 			system("cls");
-			turn += 1;
-			wait(0.75);
+			wait(0.1);
 			print("\nStarting Main Game Loop\n");
-			wait(0.75);
-			cout << "Turn: " << turn << endl;
-			wait(2.0);
+			wait(0.1);
 			battleFlag = false;
 			print("Battle Flag set to false!");
-			wait(0.75);
-			print(player);
-			wait(1.0);
+			turn += 1;
+			cout << "Turn: " << turn << endl;
+			wait(0.5);
 			battleFlag = travel(player);
 			//do_battle(battleFlag, player);
 			exitFlag = false;//check_game_over(player);
