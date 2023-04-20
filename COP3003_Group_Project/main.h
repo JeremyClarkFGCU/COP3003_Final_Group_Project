@@ -1,6 +1,6 @@
 ﻿// ==========================================================
-// Main Header File for Final Group Project
-// Authors: Jeremy Clark, Markendy Pierre, Rainier St. Fort.
+// Main Header File for Final Group Project					|
+// Authors: Jeremy Clark, Markendy Pierre, Rainier St. Fort.|
 // ==========================================================
 
 

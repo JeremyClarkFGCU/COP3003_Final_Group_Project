@@ -2,7 +2,7 @@
 // ==============================================
 // | game.h										|
 // | Authors; Rainier St. Fort, Markendy Pierre	|
-// | Desc: Contains Gameplay Mechanics			|
+// | Desc: Contains Core Gameplay Mechanics		|
 // ==============================================
 #ifndef GAME_H
 #define GAME_H
@@ -16,12 +16,14 @@
 
 class Game {
 private:
-	Player player;
+	
 	bool battleFlag;
 	int turn = 0;
 
 public:
-	void initialize() {
+	Player player;
+
+	void initialize(Player & player) {
 		cout << "Welcome! Setting up the game." << endl;
 		wait(1.0);
 		player = Player(1);
@@ -35,10 +37,9 @@ public:
 		print("\n");
 		wait(1.5);
 		player.set_direction();
-
 	}
 
-	void run() {
+	void run(Player & player) {
 		while (exitFlag == false) {
 			system("cls");
 			turn += 1;
@@ -53,8 +54,8 @@ public:
 			print(player);
 			wait(1.0);
 			battleFlag = travel(player);
-			do_battle(battleFlag, player);
-			exitFlag = check_game_over(player);
+			//do_battle(battleFlag, player);
+			exitFlag = false;//check_game_over(player);
 		}
 		if (exitFlag == true) {
 			game_over();
@@ -65,6 +66,5 @@ public:
 	}
 
 };
-
 
 #endif

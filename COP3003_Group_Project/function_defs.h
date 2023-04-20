@@ -7,6 +7,8 @@
 #ifndef FUNCTION_DEFS_H
 #define FUNCTION_DEFS_H
 
+#include "menu.h"
+
 
 // ====================
 // Function Definitions
@@ -68,16 +70,17 @@ void print(string s) { // print Overload -  Display string to user.
 
 
 bool check_for_boundary(Player & p) { // Checks player position to determine if at edge of map.
-    if (p.get_x_position() == 50 || p.get_x_position() == 0 || p.get_y_position() == 0 || p.get_x_position() == 50 || p.get_direction() == 0) {
+    if (p.get_x_position() == 50 || p.get_x_position() == 0 || p.get_y_position() == 0 || p.get_x_position() == 50) {
         return true;
     }
     else { return false; }
 } // End of check_for_boundary.
 
 
-void move(Player& p) {
+void move(Player & p) {
     switch (p.get_direction()) {
     case STAY:
+        in_game_menu(p);
         break;
     case NORTH:
         if (p.get_y_position() < 50) {
@@ -110,7 +113,7 @@ void move(Player& p) {
     }
 }
 
-bool travel(Player& p) {
+bool travel(Player & p) {
     print("\n");
     p.print_position();
     wait(1.0);
